@@ -7,6 +7,9 @@ module.exports = {
       colors: {
         "light-gray": "#EAEAEA",
       },
+      textShadow: {
+        'slide': '2px 2px 4px rgba(0, 0, 0, 0.5)',
+      },
     },
   },
   plugins: [],
