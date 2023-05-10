@@ -12,7 +12,7 @@
   </section>
 </template>
 <script>
-import IconRedberry from "../components/icons/IconRedberry.vue";
+import IconRedberry from "@/components/icons/IconRedberry.vue";
 export default {
   components: {
     IconRedberry,

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseBackground from "./components/UI/BaseBackground.vue";
+import BaseBackground from "@/components/UI/BaseBackground.vue";
 
 export default {
   components: {
