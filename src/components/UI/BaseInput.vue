@@ -18,8 +18,6 @@
       </div>
     </div>
 
-
-
     <div v-else-if="type === 'radio'" class="mt-2">
       <Field
         class="w-[23px] h-[23px] accent-[#232323]"
@@ -84,13 +82,8 @@ export default {
     const store = useStore();
 
     const storedValue = computed(() => {
-      if (props.name === "number" || props.name === "test_date") {
-        return store.state.identification.identificationData.antibodies[
-          props.name
-        ];
-      } else {
-        return store.state.identification.identificationData[props.name];
-      }
+      console.log(store.state);
+      return store.state.requestData[props.name];
     });
 
     watch(storedValue, (newValue) => {
@@ -100,26 +93,8 @@ export default {
     watch(inputData, (newValue) => {
       const key = props.name;
       const value = newValue;
-      if (key === "had_covid" && value !== "yes") {
-        store.commit("identification/clearStateIfHadCovidFalse");
-      }
 
-      if (key === "had_antibody_test" && value === "yes") {
-        store.commit("identification/clearStateIfHadCovidAndAntibodyTest");
-      }
-
-      if (key === "had_antibody_test" && value === "no") {
-        store.commit("identification/clearStateIfHadCovidAndNotAntibodyTest");
-      }
-
-      if (key === "had_vaccine" && value === "no") {
-        store.commit("identification/clearStateIfIsNotVaccinated");
-      }
-      if (key === "had_vaccine" && value === "yes") {
-        store.commit("identification/clearStateIfIsVaccinated");
-      }
-
-      store.commit("identification/setInputValue", { key, value });
+      store.commit("setInputValue", { key, value });
     });
 
     onMounted(() => {
@@ -134,8 +109,3 @@ export default {
   },
 };
 </script>
-
-<!-- 
-
-    
- -->

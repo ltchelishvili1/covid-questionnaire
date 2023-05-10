@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center justify-center">
       <icon-redberry></icon-redberry>
       <router-link
-        to="#"
+        :to="{ name: 'identification' }"
         class="font-bold text-3xl mb-[200px] mt-[101px] cursor-pointer"
       >
         კითხვარის <span class="flex items-center justify-center">დაწყება</span>

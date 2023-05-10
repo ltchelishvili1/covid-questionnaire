@@ -16,6 +16,17 @@
         <slot name="icon"></slot>
       </div>
     </div>
+    <div class="absolute flex left-1/2 bottom-[100px]">
+      <router-link :to="link" class="mr-[60px]">
+        <icon-back v-if="page !== 1"></icon-back>
+      </router-link>
+      <button
+        :onclick="submitForm"
+        class="ml-[60px]"
+      >
+        <icon-forward ></icon-forward>
+      </button>
+    </div>
   </main>
 </template>
 <script>
@@ -25,6 +36,18 @@ export default {
     page: {
       type: Number,
       required: true,
+    },
+    link: {
+      type: String,
+      required: true,
+    },
+    submitForm: {
+      type: Function,
+      required: true,
+    },
+    disabled: {
+      type: Boolean,
+      required: false,
     },
   },
   components: {
