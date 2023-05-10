@@ -3,7 +3,14 @@ module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "light-gray": "#EAEAEA",
+      },
+      textShadow: {
+        'slide': '2px 2px 4px rgba(0, 0, 0, 0.5)',
+      },
+    },
   },
   plugins: [],
 };
