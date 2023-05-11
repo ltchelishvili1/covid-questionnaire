@@ -82,8 +82,8 @@ export default {
     const store = useStore();
 
     const storedValue = computed(() => {
-      console.log(store.state);
-      return store.state.requestData[props.name];
+      console.log(store.state.identification);
+      return store.state.identification.identificationData[props.name];
     });
 
     watch(storedValue, (newValue) => {
@@ -94,7 +94,7 @@ export default {
       const key = props.name;
       const value = newValue;
 
-      store.commit("setInputValue", { key, value });
+      store.commit("identification/setInputValue", { key, value });
     });
 
     onMounted(() => {
