@@ -33,14 +33,19 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    const disabled = store.getters["identification/getIdentificationValidation"] === false;
+    const disabled =
+      store.getters["identification/getIdentificationValidation"] === false;
 
     const onSubmit = handleSubmit(() => {
-      store.commit("identification/setIdentificationValidation");
+      store.commit("identification/setIdentificationValidation", {
+        isValid: true,
+      });
     });
 
     onMounted(() => {
-      store.commit("identification/setIdentificationValidationFalse");
+      store.commit("identification/setIdentificationValidation", {
+        isValid: false,
+      });
     });
 
     return {

@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import IdentificationModule from "./modules/identification/index";
+import IdentificationModule from "@/store/modules/identification/index";
 
 const store = createStore({
   modules: {

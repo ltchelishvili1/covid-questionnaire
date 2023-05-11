@@ -24,6 +24,11 @@
 
 <script>
 export default {
-  props: ["submitForm"],
+  props: {
+    submitForm: {
+      type: Function,
+      required: true,
+    },
+  },
 };
 </script>

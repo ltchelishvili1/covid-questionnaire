@@ -63,15 +63,47 @@ import { ref, watch, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  props: [
-    "title",
-    "rules",
-    "name",
-    "placeholder",
-    "type",
-    "value",
-    "lastInput",
-  ],
+  // props: [
+  //   "title",
+  //   "rules",
+  //   "name",
+  //   "placeholder",
+  //   "type",
+  //   "value",
+  //   "lastInput",
+  // ],
+
+  props: {
+    title: {
+      type: String,
+      required: false,
+    },
+    rules: {
+      type: String,
+      required: false,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    placeholder: {
+      type: String,
+      required: false,
+    },
+    type: {
+      type: String,
+      required: false,
+    },
+    value: {
+      type: String,
+      required: false,
+    },
+    lastInput: {
+      type: Boolean,
+      required: false,
+    },
+  },
+
   components: {
     Field,
     ErrorMessage,
