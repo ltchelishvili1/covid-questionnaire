@@ -8,8 +8,8 @@
         class="w-full h-field bg-transparent border border-[#232323] p-4 mt-[12px]"
         :id="name"
         :name="name"
-        :type="type || 'text'"
-        :placeholder="placeholder || name"
+        as="textarea"
+        rows="6"
         :rules="rules"
         v-model="inputData"
       />
@@ -39,11 +39,8 @@ export default {
       type: String,
       required: true,
     },
-    placeholder: {
-      type: String,
-      required: false,
-    },
-    type: {
+
+    value: {
       type: String,
       required: false,
     },
@@ -59,7 +56,6 @@ export default {
     const store = useStore();
 
     const storedValue = computed(() => {
-      console.log(store.state.identification);
       return store.state.identification.identificationData[props.name];
     });
 

@@ -23,7 +23,12 @@
 </template>
 
 <script>
+import BaseInput from "@/components/UI/BaseInput.vue";
+
 export default {
+  components: {
+    BaseInput,
+  },
   props: {
     submitForm: {
       type: Function,
