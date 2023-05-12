@@ -30,6 +30,7 @@
 import IconName from "@/components/icons/IconName.vue";
 import IconBack from "@/components/icons/IconBack.vue";
 import IconForward from "@/components/icons/IconForward.vue";
+import { inject } from "vue";
 
 export default {
   components: {
@@ -46,14 +47,17 @@ export default {
       type: String,
       required: true,
     },
-    submitForm: {
-      type: Function,
-      required: true,
-    },
+
     disabled: {
       type: Boolean,
       required: false,
     },
+  },
+
+  setup() {
+    return {
+      submitForm: inject("submitForm"),
+    };
   },
 };
 </script>

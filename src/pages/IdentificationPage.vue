@@ -1,7 +1,7 @@
 <template>
-  <questionaire-layout :submitForm="submitForm" link="/home" :page="1">
+  <questionaire-layout link="/home" :page="1">
     <template v-slot:form>
-      <identification-form :submitForm="submitForm"></identification-form>
+      <identification-form></identification-form>
     </template>
     <template v-slot:icon>
       <div
@@ -22,13 +22,13 @@ import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted, provide } from "vue";
 
 export default {
   components: {
     IdentificationBackground,
     IdentificationForm,
-    QuestionaireLayout
+    QuestionaireLayout,
   },
 
   setup() {
@@ -45,6 +45,8 @@ export default {
       });
     });
 
+    provide("submitForm", onSubmit);
+
     onMounted(() => {
       store.commit("identification/setIdentificationValidation", {
         isValid: false,
@@ -52,7 +54,6 @@ export default {
     });
 
     return {
-      submitForm: onSubmit,
       disabled: disabled,
     };
   },

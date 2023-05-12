@@ -24,12 +24,16 @@
 
 <script>
 import BaseInput from "@/components/UI/inputs/BaseInput.vue";
+import { inject } from "vue";
 
 export default {
   components: {
     BaseInput,
   },
-  
-
+  setup() {
+    return {
+      submitForm: inject("submitForm"),
+    };
+  },
 };
 </script>
