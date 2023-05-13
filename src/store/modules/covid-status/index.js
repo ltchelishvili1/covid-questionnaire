@@ -6,7 +6,7 @@ export default {
   state() {
     return {
       covidStatusData: {
-        covidStatusIsValid,
+        covidStatusIsValid: false,
         had_covid: null,
         had_antibody_test: null,
         covid_sickness_date: null,

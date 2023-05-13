@@ -1,11 +1,11 @@
 import { createStore } from "vuex";
 import IdentificationModule from "@/store/modules/identification/index";
-import checkCovidModule from "@/store/modules/identification/index";
+import CovidStatusModule from "@/store/modules/covid-status/index";
 
 const store = createStore({
   modules: {
     identification: IdentificationModule,
-    checkCovid: checkCovidModule,
+    covidStatus: CovidStatusModule,
   },
 });
 
