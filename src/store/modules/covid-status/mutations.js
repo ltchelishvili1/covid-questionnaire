@@ -1,13 +1,16 @@
 export default {
   setInputValue(state, { key, value }) {
-    state.covidStatusData[key] = value;
+    if (key === "number" || key === "test_date") {
+      state.covidStatusData.antibodies = state.covidStatusData.antibodies || {};
+      state.covidStatusData.antibodies[key] = value;
+    } else {
+      state.covidStatusData[key] = value;
+    }
   },
+  
 
   setCovidStatusValidation(state, { isValid }) {
     state.covidStatusData.covidStatusIsValid = isValid;
-  },
-  setEmptyAntibodies(state) {
-    state.covidStatusData.antibodies.test_date = null;
   },
 
   clearStateIfHadCovidFalse(state) {

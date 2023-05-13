@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
 import store from "@/store/index";
 import IdentificationPage from "@/pages/IdentificationPage.vue";
+import CovidStatusPage from "@/pages/CovidStatusPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -23,7 +24,7 @@ const router = createRouter({
     {
       path: "/covid-status",
       name: "covid-status",
-      component: null,
+      component: CovidStatusPage,
       beforeEnter: (_, _2, next) => {
         const isValid =
           store.getters["identification/getIdentificationValidation"];

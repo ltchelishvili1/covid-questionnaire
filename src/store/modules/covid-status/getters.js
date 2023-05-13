@@ -3,6 +3,9 @@ export default {
     return state.covidStatusData.covidStatusIsValid;
   },
   getHadAntibodyTestValue(state) {
-    return state.covidStatusData.covidStatusIsValid.had_antibody_test;
+    return state.covidStatusData.had_antibody_test;
+  },
+  getHadCovidValue(state) {
+    return state.covidStatusData.had_covid;
   },
 };
