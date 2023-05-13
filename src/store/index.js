@@ -1,9 +1,11 @@
 import { createStore } from "vuex";
 import IdentificationModule from "@/store/modules/identification/index";
+import checkCovidModule from "@/store/modules/identification/index";
 
 const store = createStore({
   modules: {
     identification: IdentificationModule,
+    checkCovid: checkCovidModule,
   },
 });
 
