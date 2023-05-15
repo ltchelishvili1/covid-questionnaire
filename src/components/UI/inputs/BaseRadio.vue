@@ -14,7 +14,7 @@
       <label class="absolute ml-4 -mt-[3px] font-normal text-xl">{{
         placeholder
       }}</label>
-      <div v-if="lastInput === true" class="mt-[6px]">
+      <div v-if="isLastInput" class="mt-[6px]">
         <ErrorMessage class="text-red-500 ml-4" :name="name" />
       </div>
     </div>
@@ -60,18 +60,24 @@ export default {
     ErrorMessage,
   },
 
-  setup({ page, name }) {
+  setup({ page, name, lastInput }) {
     const inputData = ref("");
     const store = useStore();
     const pageData = page + "Data";
 
+    const checkHadVaccine = computed(
+      () => name === "number" || name === "test_date"
+    );
+
     const storedValue = computed(() => {
-      if (name === "number" || name === "test_date") {
+      if (checkHadVaccine.value) {
         return store.covidStatus.covidStatusData[name];
       } else {
         return store.state[page][pageData][name];
       }
     });
+
+    const isLastInput = computed(() => lastInput === true);
 
     watch(storedValue, (newValue) => {
       inputData.value = newValue;
@@ -86,23 +92,39 @@ export default {
       });
 
       const hadAntibodyTest = computed(() => {
-        return (key === key) === "had_antibody_test" && value === "yes";
+        return key === "had_antibody_test" && value === "yes";
       });
 
       const hadNotAntibodyTest = computed(() => {
-        return (key === key) === "had_antibody_test" && value === "no";
+        return key === "had_antibody_test" && value === "no";
       });
 
-      if (hadNotCovid) {
+      const hadVaccine = computed(() => {
+        return key === "had_vaccine" && value === "yes";
+      });
+
+      const hadNotVaccine = computed(() => {
+        return key === "had_vaccine" && value === "no";
+      });
+
+      if (hadNotCovid.value) {
         store.commit("covidStatus/clearStateIfHadCovidFalse");
       }
 
-      if (hadAntibodyTest) {
+      if (hadAntibodyTest.value) {
         store.commit("covidStatus/clearStateIfHadCovidAndAntibodyTest");
       }
 
-      if (hadNotAntibodyTest) {
+      if (hadNotAntibodyTest.value) {
         store.commit("covidStatus/clearStateIfHadCovidAndNotAntibodyTest");
+      }
+
+      if (hadVaccine.value) {
+        store.commit("vaccinated/clearStateIfHadVaccine");
+      }
+
+      if (hadNotVaccine.value) {
+        store.commit("vaccinated/clearStateIfHadNotVaccine");
       }
 
       store.commit(`${page}/setInputValue`, { key, value });
@@ -116,6 +138,7 @@ export default {
 
     return {
       inputData,
+      isLastInput,
     };
   },
 };

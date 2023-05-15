@@ -14,7 +14,6 @@ export default {
   },
 
   clearStateIfHadCovidFalse(state) {
-    delete state.covidStatusData.had_antibody_test;
     delete state.covidStatusData.antibodies;
     delete state.covidStatusData.covid_sickness_date;
   },
