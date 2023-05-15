@@ -3,7 +3,7 @@
     <template v-slot:form>
       <covid-status-form
         :hadCovid="hadCovid"
-        :checkHadAntibody="checkHadAntibody && checkHadAntibody"
+        :checkHadAntibody="checkHadAntibody"
       ></covid-status-form>
     </template>
     <template v-slot:icon>

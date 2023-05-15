@@ -55,7 +55,7 @@
       ></base-radio>
     </div>
 
-    <div v-if="hadCovid && checkHadAntibody === 'yes'">
+    <div v-if="hadCovidAndAntibodyTest">
       <div class="mb-[14px] mt-[48px]">
         <p class="font-semibold text-2xl">
           თუ გახსოვს, გთხოვ მიუთითე ტესტის მიახლოებითი რიცხვი და ანტისხეულების
@@ -79,7 +79,7 @@
       </div>
     </div>
 
-    <div v-if="hadCovid && checkHadAntibody === 'no'">
+    <div v-if="hadCovidAndNotAntibodyTest">
       <div class="mb-[14px] mt-[48px]">
         <p class="font-semibold text-2xl">
           მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*
@@ -101,23 +101,36 @@
 <script>
 import BaseInput from "@/components/UI/inputs/BaseInput.vue";
 import BaseRadio from "@/components/UI/inputs/BaseRadio.vue";
+import { computed } from "vue";
 
 export default {
   components: {
     BaseInput,
     BaseRadio,
-
   },
   props: {
     hadCovid: {
-      type: Boolean,
+      type: Boolean || Null,
       required: true,
     },
     checkHadAntibody: {
-      type: String,
+      type: String || Null,
       required: true,
       default: "",
     },
+  },
+  setup(props) {
+    
+    const hadCovidAndAntibodyTest = computed(() => {
+      return props.hadCovid && props.checkHadAntibody === "yes";
+    });
+    const hadCovidAndNotAntibodyTest = computed(() => {
+      return props.hadCovid && props.checkHadAntibody === "no";
+    });
+    return {
+      hadCovidAndAntibodyTest,
+      hadCovidAndNotAntibodyTest,
+    };
   },
 };
 </script>

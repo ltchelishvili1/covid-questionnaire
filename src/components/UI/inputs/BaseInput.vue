@@ -29,7 +29,7 @@ export default {
   props: {
     page: {
       type: String,
-      required: true,
+      required: false,
       default: "identification",
     },
     title: {

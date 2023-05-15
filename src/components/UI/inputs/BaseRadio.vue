@@ -81,15 +81,27 @@ export default {
       const key = name;
       const value = newValue;
 
-      if (key === "had_covid" && value !== "yes") {
+      const hadNotCovid = computed(() => {
+        return key === "had_covid" && value !== "yes";
+      });
+
+      const hadAntibodyTest = computed(() => {
+        return (key === key) === "had_antibody_test" && value === "yes";
+      });
+
+      const hadNotAntibodyTest = computed(() => {
+        return (key === key) === "had_antibody_test" && value === "no";
+      });
+
+      if (hadNotCovid) {
         store.commit("covidStatus/clearStateIfHadCovidFalse");
       }
 
-      if (key === "had_antibody_test" && value === "yes") {
+      if (hadAntibodyTest) {
         store.commit("covidStatus/clearStateIfHadCovidAndAntibodyTest");
       }
 
-      if (key === "had_antibody_test" && value === "no") {
+      if (hadNotAntibodyTest) {
         store.commit("covidStatus/clearStateIfHadCovidAndNotAntibodyTest");
       }
 
