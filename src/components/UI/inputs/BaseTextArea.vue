@@ -27,6 +27,11 @@ import { useStore } from "vuex";
 
 export default {
   props: {
+    page: {
+      type: String,
+      required: true,
+      default: "identification",
+    },
     title: {
       type: String,
       required: false,

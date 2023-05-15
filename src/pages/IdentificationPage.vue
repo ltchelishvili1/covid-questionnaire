@@ -43,6 +43,7 @@ export default {
       store.commit("identification/setIdentificationValidation", {
         isValid: true,
       });
+      router.push({name: "covid-status"})
     });
 
     provide("submitForm", onSubmit);

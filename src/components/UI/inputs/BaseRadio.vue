@@ -28,6 +28,11 @@ import { useStore } from "vuex";
 
 export default {
   props: {
+    page: {
+      type: String,
+      required: true,
+      default: "identification",
+    },
     rules: {
       type: String,
       required: false,
@@ -55,13 +60,17 @@ export default {
     ErrorMessage,
   },
 
-  setup(props) {
+  setup({ page, name }) {
     const inputData = ref("");
     const store = useStore();
+    const pageData = page + "Data";
 
     const storedValue = computed(() => {
-      console.log(store.state.identification);
-      return store.state.identification.identificationData[props.name];
+      if (name === "number" || name === "test_date") {
+        return store.covidStatus.covidStatusData[name];
+      } else {
+        return store.state[page][pageData][name];
+      }
     });
 
     watch(storedValue, (newValue) => {
@@ -69,10 +78,34 @@ export default {
     });
 
     watch(inputData, (newValue) => {
-      const key = props.name;
+      const key = name;
       const value = newValue;
 
-      store.commit("identification/setInputValue", { key, value });
+      const hadNotCovid = computed(() => {
+        return key === "had_covid" && value !== "yes";
+      });
+
+      const hadAntibodyTest = computed(() => {
+        return (key === key) === "had_antibody_test" && value === "yes";
+      });
+
+      const hadNotAntibodyTest = computed(() => {
+        return (key === key) === "had_antibody_test" && value === "no";
+      });
+
+      if (hadNotCovid) {
+        store.commit("covidStatus/clearStateIfHadCovidFalse");
+      }
+
+      if (hadAntibodyTest) {
+        store.commit("covidStatus/clearStateIfHadCovidAndAntibodyTest");
+      }
+
+      if (hadNotAntibodyTest) {
+        store.commit("covidStatus/clearStateIfHadCovidAndNotAntibodyTest");
+      }
+
+      store.commit(`${page}/setInputValue`, { key, value });
     });
 
     onMounted(() => {

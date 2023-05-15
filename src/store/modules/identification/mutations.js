@@ -1,6 +1,5 @@
 export default {
   setInputValue(state, { key, value }) {
-    console.log(state);
     state.identificationData[key] = value;
   },
 
