@@ -36,6 +36,21 @@ const router = createRouter({
         }
       },
     },
+    {
+      path: "/vaccinated",
+      name: "vaccinated",
+      component: CovidStatusPage,
+      beforeEnter: (_, _2, next) => {
+        const isValid =
+          store.getters["covidStatus/getCovidStatusValidation"];
+
+        if (!isValid) {
+          next("/covid-status");
+        } else {
+          next();
+        }
+      },
+    },
  
   ],
 });
