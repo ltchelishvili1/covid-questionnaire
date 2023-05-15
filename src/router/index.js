@@ -3,6 +3,7 @@ import HomePage from "@/pages/HomePage.vue";
 import store from "@/store/index";
 import IdentificationPage from "@/pages/IdentificationPage.vue";
 import CovidStatusPage from "@/pages/CovidStatusPage.vue";
+import VaccinatedPage from "@/pages/VaccinatedPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -39,10 +40,9 @@ const router = createRouter({
     {
       path: "/vaccinated",
       name: "vaccinated",
-      component: CovidStatusPage,
+      component: VaccinatedPage,
       beforeEnter: (_, _2, next) => {
-        const isValid =
-          store.getters["covidStatus/getCovidStatusValidation"];
+        const isValid = store.getters["covidStatus/getCovidStatusValidation"];
 
         if (!isValid) {
           next("/covid-status");
@@ -51,7 +51,6 @@ const router = createRouter({
         }
       },
     },
- 
   ],
 });
 

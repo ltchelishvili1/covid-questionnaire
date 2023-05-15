@@ -1,5 +1,5 @@
-import mutations from "@/store/modules/covid-status/mutations.js";
-import getters from "@/store/modules/covid-status/getters.js";
+import mutations from "@/store/modules/vaccinated/mutations.js";
+import getters from "@/store/modules/vaccinated/getters.js";
 
 export default {
   namespaced: true,
