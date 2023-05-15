@@ -1,10 +1,11 @@
 export default {
   setInputValue(state, { key, value }) {
-    state.covidStatusData[key] = value;
+    state.covidPoliticData[key] = value;
   },
 
   setCovidPoliticValidation(state, { isValid }) {
-    state.covidPoliticData.covidStatusIsValid = isValid;
+    console.log(state)
+    state.covidPoliticData.covidPoliticIsValid = isValid;
   },
 
 };

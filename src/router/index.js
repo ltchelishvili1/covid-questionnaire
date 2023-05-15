@@ -4,6 +4,7 @@ import store from "@/store/index";
 import IdentificationPage from "@/pages/IdentificationPage.vue";
 import CovidStatusPage from "@/pages/CovidStatusPage.vue";
 import VaccinatedPage from "@/pages/VaccinatedPage.vue";
+import CovidPoliticPage from '@/pages/CovidPoliticPage.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -54,7 +55,7 @@ const router = createRouter({
     {
       path: "/covid-politic",
       name: "covid-politic",
-      component: HomePage,
+      component: CovidPoliticPage,
       beforeEnter: (_, _2, next) => {
         const isValid = store.getters["vaccinated/getVaccinatedValidation"];
         if (!isValid) {

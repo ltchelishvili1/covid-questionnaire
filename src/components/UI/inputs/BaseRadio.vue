@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="mt-2">
+    <div class="mt-2 flex items-center">
       <Field
-        class="w-[23px] h-[23px] accent-[#232323]"
+        class="w-[23px] h-[23px] accent-[#232323] "
         :value="value"
         :id="name"
         :name="name"
@@ -11,7 +11,7 @@
         v-model="inputData"
       />
 
-      <label class="absolute ml-4 -mt-[3px] font-normal text-xl">{{
+      <label class=" ml-4 font-normal text-xl">{{
         placeholder
       }}</label>
       <div v-if="isLastInput" class="mt-[6px]">

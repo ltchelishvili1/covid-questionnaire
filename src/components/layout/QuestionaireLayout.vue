@@ -21,7 +21,7 @@
         <icon-back v-if="page !== 1"></icon-back>
       </router-link>
       <button :onclick="submitForm" class="ml-[60px]">
-        <icon-forward></icon-forward>
+        <icon-forward v-if="page !== 4"></icon-forward>
       </button>
     </div>
   </main>
