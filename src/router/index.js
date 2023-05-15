@@ -51,6 +51,19 @@ const router = createRouter({
         }
       },
     },
+    {
+      path: "/covid-politic",
+      name: "covid-politic",
+      component: HomePage,
+      beforeEnter: (_, _2, next) => {
+        const isValid = store.getters["vaccinated/getVaccinatedValidation"];
+        if (!isValid) {
+          next("/vaccinated");
+        } else {
+          next();
+        }
+      },
+    },
   ],
 });
 
