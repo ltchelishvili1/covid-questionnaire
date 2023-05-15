@@ -4,7 +4,6 @@ export default {
   },
 
   setCovidPoliticValidation(state, { isValid }) {
-    console.log(state)
     state.covidPoliticData.covidPoliticIsValid = isValid;
   },
 

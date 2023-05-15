@@ -1,5 +1,8 @@
 <template>
-  <form @submit.prevent="submitForm" class="h-[600px]  overflow-y-hidden hover:overflow-y-scroll scrollbar scrollbar-thumb-gray-300 scrollbar-track-transparent scrollbar-thin">
+  <form
+    @submit.prevent="submitForm"
+    class="h-[600px] sm: overflow-y-scroll overflow-y-hidden hover:overflow-y-scroll scrollbar scrollbar-thumb-gray-300 scrollbar-track-transparent scrollbar-thin"
+  >
     <p class="w-[440px] text-xl">
       რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო, რომელსაც
       ჩვენი თანამშრომლები ქმნით, ბევრისთვის არის და ყოფილა წლების განმავლობაში
@@ -98,24 +101,32 @@
       ></base-radio>
     </div>
 
-    <div>
-      <base-text-area
-        title="რას ფიქრობ ფიზიკურ შეკრებებზე?"
-        name="what_about_meetings_in_live"
-        type="textarea"
-        page="covidPolitic"
-      ></base-text-area>
-      <base-text-area
-        title="რას ფიქრობ არსებულ გარემოზე: 
+    <div class="flex flex-col justify-between items-end mt-[50px]">
+      <div>
+        <base-text-area
+          title="რას ფიქრობ ფიზიკურ შეკრებებზე?"
+          name="what_about_meetings_in_live"
+          type="textarea"
+          page="covidPolitic"
+        ></base-text-area>
+        <base-text-area
+          title="რას ფიქრობ არსებულ გარემოზე: 
   რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
-        name="tell_us_your_opinion_about_us"
-        type="textarea"
-        page="covidPolitic"
-        :lastInput="true"
-      ></base-text-area>
+          name="tell_us_your_opinion_about_us"
+          type="textarea"
+          page="covidPolitic"
+          :lastInput="true"
+        ></base-text-area>
+      </div>
+      <div>
+        <button
+          type="submit"
+          class="bg-[#208298] text-[#FFFFFF] rounded-[48px] p-[20px] text-lg font-bold"
+        >
+          დასრულება
+        </button>
+      </div>
     </div>
-
-    <button>submit</button>
   </form>
 </template>
 
@@ -125,16 +136,16 @@ import BaseInput from "@/components/UI/inputs/BaseInput.vue";
 import BaseRadio from "@/components/UI/inputs/BaseRadio.vue";
 import BaseTextArea from "@/components//UI/inputs/BaseTextArea.vue";
 
-
 export default {
   components: {
     BaseInput,
     BaseRadio,
-    BaseTextArea
-
+    BaseTextArea,
   },
   setup() {
-    inject("submitForm");
+    return {
+      submitForm: inject("submitForm"),
+    };
   },
 };
 </script>

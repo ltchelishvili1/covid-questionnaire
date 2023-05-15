@@ -1,5 +1,6 @@
 import mutations from "@/store/modules/covid-politic/mutations.js";
 import getters from "@/store/modules/covid-politic/getters.js";
+import actions from "@/store/modules/covid-politic/actions.js";
 
 export default {
   namespaced: true,
@@ -16,4 +17,5 @@ export default {
   },
   mutations,
   getters,
+  actions,
 };

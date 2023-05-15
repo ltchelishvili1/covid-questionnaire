@@ -10,7 +10,6 @@
     </template>
   </questionaire-layout>
 </template>
-
 <script>
 import CovidPoliticBackground from "@/assets/images/CovidPoliticBackground.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
@@ -34,10 +33,19 @@ export default {
 
     const { handleSubmit } = useForm();
 
-    const onSubmit = handleSubmit(() => {
+    const onSubmit = handleSubmit(async () => {
       store.commit("covidPolitic/setCovidPoliticValidation", { isValid: true });
-      //   store.dispatch("covidPolitic/sendRequest");
-      // router.push({ name: "thankyou" });
+
+      try {
+        const status = await store.dispatch("covidPolitic/sendRequest");
+        if (status === 201) {
+          router.push("/home");
+        } else {
+          alert("An error occurred. Please try again.");
+        }
+      } catch (error) {
+        alert(error);
+      }
     });
 
     provide("submitForm", onSubmit);
