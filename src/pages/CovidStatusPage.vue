@@ -7,7 +7,15 @@
       ></covid-status-form>
     </template>
     <template v-slot:icon>
-      <had-covid-background></had-covid-background>
+      <transition name="red-circle" mode="out-in">
+        <div
+          v-if="redCircle"
+          class="translate-x-[190px] translate-y-[185px] h-[230px] w-[230px] bg-[#DD3939] rounded-full"
+        ></div>
+      </transition>
+      <div class="absolute top-[120px] ml-[100px]">
+        <had-covid-background></had-covid-background>
+      </div>
     </template>
   </questionaire-layout>
 </template>
@@ -16,7 +24,7 @@
 import { useStore } from "vuex";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
-import { onMounted, computed, ref, watch, provide } from "vue";
+import { onMounted, computed, ref, watch, provide, onBeforeMount } from "vue";
 
 import hadCovidBackground from "@/assets/images/hadCovidBackground.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
@@ -32,6 +40,14 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
+    const redCircle = ref(false);
+
+    onBeforeMount(() => {
+      setTimeout(() => {
+        redCircle.value = true;
+      }, 10);
+    });
+
     const hadCovid = computed(
       () => store.getters["covidStatus/getHadCovidValue"]
     );
@@ -70,7 +86,31 @@ export default {
       submitForm: onSubmit,
       hadCovid: checkHadCovid,
       checkHadAntibody,
+      redCircle,
     };
   },
 };
 </script>
+
+<style scoped>
+.red-circle-enter-from {
+  transform: translate(230px, 150px);
+}
+
+.red-circle-leave-to {
+  transform: translate(190px, 185px);
+}
+
+.red-circle-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.red-circle-leave-active {
+  transition: all 0.5s ease-in;
+}
+
+.red-circle-enter-to,
+.red-circle-leave-from {
+  transform:  translate(190px, 185px);
+}
+</style>

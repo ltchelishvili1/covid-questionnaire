@@ -48,10 +48,15 @@ export default {
     });
 
     const onSubmit = handleSubmit(() => {
-      store.commit("identification/setIdentificationValidation", {
+      showBox.value = false;
+
+      setTimeout(() => {
+        store.commit("identification/setIdentificationValidation", {
         isValid: true,
       });
       router.push({ name: "covid-status" });
+      }, 500);
+   
     });
 
     provide("submitForm", onSubmit);
@@ -75,7 +80,7 @@ export default {
 }
 
 .yellow-box-leave-to {
-
+  transform: translate(190px,200px);
 }
 
 .yellow-box-enter-active {
