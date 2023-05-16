@@ -1,6 +1,6 @@
 export default {
   getVaccinatedValidation(state) {
-    return state.vaccinatedData.covidStatusIsValid;
+    return state.vaccinatedData.vaccinatedIsValid;
   },
   getVaccinationStageValue(state) {
     return state.vaccinatedData.vaccination_stage;

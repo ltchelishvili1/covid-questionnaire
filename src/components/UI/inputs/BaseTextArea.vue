@@ -55,13 +55,13 @@ export default {
     Field,
     ErrorMessage,
   },
-
-  setup(props) {
+  setup({ page, name }) {
     const inputData = ref("");
     const store = useStore();
+    const pageData = page + "Data";
 
     const storedValue = computed(() => {
-      return store.state.identification.identificationData[props.name];
+      return store.state[page][pageData][name];
     });
 
     watch(storedValue, (newValue) => {
@@ -69,10 +69,10 @@ export default {
     });
 
     watch(inputData, (newValue) => {
-      const key = props.name;
+      const key = name;
       const value = newValue;
 
-      store.commit("identification/setInputValue", { key, value });
+      store.commit(`${page}/setInputValue`, { key, value });
     });
 
     onMounted(() => {

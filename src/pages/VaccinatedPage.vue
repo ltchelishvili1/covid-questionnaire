@@ -56,6 +56,7 @@ export default {
 
     const onSubmit = handleSubmit(() => {
       store.commit("vaccinated/setVaccinationValidation", { isValid: true });
+      router.push({ name: "covid-politic" });
     });
 
     provide("submitForm", onSubmit);

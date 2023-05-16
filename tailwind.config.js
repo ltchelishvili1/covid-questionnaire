@@ -8,9 +8,9 @@ module.exports = {
         "light-gray": "#EAEAEA",
       },
       textShadow: {
-        'slide': '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        slide: "2px 2px 4px rgba(0, 0, 0, 0.5)",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };
