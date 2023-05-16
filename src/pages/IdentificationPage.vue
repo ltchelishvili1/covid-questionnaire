@@ -4,10 +4,14 @@
       <identification-form></identification-form>
     </template>
     <template v-slot:icon>
-      <div
-        class="translate-x-[130px] translate-y-[150px] h-[75px] w-[625px] bg-[#D6D16E]"
-      ></div>
-      <div class="absolute top-[120px]">
+      <transition name="yellow-box" mode="out-in">
+        <div
+          v-if="showBox"
+          class="translate-x-[230px] translate-y-[150px] h-[75px] w-[625px] bg-[#D6D16E]"
+        ></div>
+      </transition>
+
+      <div class="absolute top-[120px] ml-[100px]">
         <identification-background></identification-background>
       </div>
     </template>
@@ -22,7 +26,7 @@ import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { onMounted, provide } from "vue";
+import { onMounted, provide, onBeforeMount , ref} from "vue";
 
 export default {
   components: {
@@ -35,9 +39,13 @@ export default {
     const { handleSubmit } = useForm();
     const router = useRouter();
     const store = useStore();
+    const showBox = ref(false);
 
-    const disabled =
-      store.getters["identification/getIdentificationValidation"] === false;
+    onBeforeMount(() => {
+      setTimeout(() => {
+        showBox.value = true;
+      }, 1);
+    });
 
     const onSubmit = handleSubmit(() => {
       store.commit("identification/setIdentificationValidation", {
@@ -55,8 +63,31 @@ export default {
     });
 
     return {
-      disabled: disabled,
+      showBox,
     };
   },
 };
 </script>
+
+<style scoped>
+.yellow-box-enter-from {
+  transform: translate(190px,200px);
+}
+
+.yellow-box-leave-to {
+
+}
+
+.yellow-box-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.yellow-box-leave-active {
+  transition: all 0.5s ease-in;
+}
+
+.yellow-box-enter-to,
+.yellow-box-leave-from {
+  transform: translate(230px,150px);
+}
+</style>
