@@ -38,8 +38,9 @@ export default {
 
       try {
         const status = await store.dispatch("covidPolitic/sendRequest");
+        console.log(status)
         if (status === 201) {
-          router.push("/home");
+          router.push({name: "thank-you"});
         } else {
           alert("An error occurred. Please try again.");
         }

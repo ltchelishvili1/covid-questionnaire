@@ -4,6 +4,7 @@ import IdentificationPage from "@/pages/IdentificationPage.vue";
 import CovidStatusPage from "@/pages/CovidStatusPage.vue";
 import VaccinatedPage from "@/pages/VaccinatedPage.vue";
 import CovidPoliticPage from "@/pages/CovidPoliticPage.vue";
+import ThankYouPage from "@/pages/ThankYouPage.vue";
 
 import {
   checkCovidStatusValidation,
@@ -45,6 +46,11 @@ const router = createRouter({
       name: "covid-politic",
       component: CovidPoliticPage,
       beforeEnter: checkVaccinatedValidation,
+    },
+    {
+      path: "/thank-you",
+      name: "thank-you",
+      component: ThankYouPage,
     },
   ],
 });
