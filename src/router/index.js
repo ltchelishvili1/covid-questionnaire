@@ -1,10 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
-import store from "@/store/index";
 import IdentificationPage from "@/pages/IdentificationPage.vue";
 import CovidStatusPage from "@/pages/CovidStatusPage.vue";
 import VaccinatedPage from "@/pages/VaccinatedPage.vue";
-import CovidPoliticPage from '@/pages/CovidPoliticPage.vue'
+import CovidPoliticPage from "@/pages/CovidPoliticPage.vue";
+
+import {
+  checkCovidStatusValidation,
+  checkIdentificationValidation,
+  checkVaccinatedValidation,
+} from "@/utils/RouterUtils.js";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,43 +32,19 @@ const router = createRouter({
       path: "/covid-status",
       name: "covid-status",
       component: CovidStatusPage,
-      beforeEnter: (_, _2, next) => {
-        const isValid =
-          store.getters["identification/getIdentificationValidation"];
-
-        if (!isValid) {
-          next("/identification");
-        } else {
-          next();
-        }
-      },
+      beforeEnter: checkIdentificationValidation,
     },
     {
       path: "/vaccinated",
       name: "vaccinated",
       component: VaccinatedPage,
-      beforeEnter: (_, _2, next) => {
-        const isValid = store.getters["covidStatus/getCovidStatusValidation"];
-
-        if (!isValid) {
-          next("/covid-status");
-        } else {
-          next();
-        }
-      },
+      beforeEnter: checkCovidStatusValidation,
     },
     {
       path: "/covid-politic",
       name: "covid-politic",
       component: CovidPoliticPage,
-      beforeEnter: (_, _2, next) => {
-        const isValid = store.getters["vaccinated/getVaccinatedValidation"];
-        if (!isValid) {
-          next("/vaccinated");
-        } else {
-          next();
-        }
-      },
+      beforeEnter: checkVaccinatedValidation,
     },
   ],
 });
