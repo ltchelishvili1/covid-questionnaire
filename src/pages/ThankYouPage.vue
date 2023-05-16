@@ -57,10 +57,7 @@ export default {
 </script>
 
 <style scoped>
-.route-enter-from {
-  opacity: 0;
-}
-
+.route-enter-from,
 .route-leave-to {
   opacity: 0;
 }
@@ -83,24 +80,18 @@ export default {
   transform: translate(100px, 100px);
 }
 
-.thank-you-icon-big-leave-to {
+.thank-you-icon-big-leave-to,
+.thank-you-icon-small-leave-to {
   opacity: 0;
 }
 
-.thank-you-icon-big-enter-active {
+.thank-you-icon-big-enter-active,
+.thank-you-icon-small-enter-active {
   transition: all 0.3s ease-out;
 }
 
 .thank-you-icon-small-enter-from {
   opacity: 0;
   transform: translate(-100px, -100px);
-}
-
-.thank-you-icon-small-leave-to {
-  opacity: 0;
-}
-
-.thank-you-icon-small-enter-active {
-  transition: all 0.3s ease-out;
 }
 </style>
