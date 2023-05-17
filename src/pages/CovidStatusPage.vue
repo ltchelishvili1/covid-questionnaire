@@ -60,8 +60,8 @@ export default {
 
     const { handleSubmit } = useForm();
 
-    const checkHadCovid = computed(() => hadCovidRef.value === "yes");
-    const checkHadAntibody = computed(() => hadAntibodyRef.value);
+    const checkHadCovid = computed(() => hadCovidRef.value === "yes") || '';
+    const checkHadAntibody = computed(() => hadAntibodyRef.value) || '';
 
     const onSubmit = handleSubmit(() => {
       redCircle.value = false;
@@ -88,7 +88,7 @@ export default {
     return {
       submitForm: onSubmit,
       hadCovid: checkHadCovid,
-      checkHadAntibody,
+      checkHadAntibody: checkHadAntibody,
       redCircle,
     };
   },

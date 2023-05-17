@@ -110,11 +110,11 @@ export default {
   },
   props: {
     hadCovid: {
-      type: Boolean || Null,
+      type: [Boolean, String],
       required: true,
     },
     checkHadAntibody: {
-      type: String || Null,
+      type: [Boolean, String],
       required: true,
       default: "",
     },

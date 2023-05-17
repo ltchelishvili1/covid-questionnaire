@@ -65,9 +65,9 @@ export default {
     const vaccinationStageRef = ref(vaccinationState.value);
     const iAmWaitingRef = ref(iAmWaiting.value);
 
-    const checkHadVaccine = computed(() => hadVaccineRef.value);
-    const checkVaccintionStage = computed(() => vaccinationStageRef.value);
-    const checkIAmWaiting = computed(() => iAmWaitingRef.value);
+    const checkHadVaccine = computed(() => hadVaccineRef.value) || '';
+    const checkVaccintionStage = computed(() => vaccinationStageRef.value) || '';
+    const checkIAmWaiting = computed(() => iAmWaitingRef.value) || '';
 
     const onSubmit = handleSubmit(() => {
       yellowStar.value = false;
