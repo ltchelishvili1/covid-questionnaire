@@ -9,8 +9,10 @@
           v-if="redHeart"
           class="translate-x-[300px] translate-y-[90px] w-[196px] h-[173px]"
         >
-        <icon-heart :class="[isSubmitted ? 'fill-[#232323]' : 'fill-[#F39494]']"></icon-heart>
-   </div>
+          <icon-heart
+            :class="[isSubmitted ? 'fill-[#232323]' : 'fill-[#F39494]']"
+          ></icon-heart>
+        </div>
       </transition>
 
       <div class="absolute top-[220px] ml-[200px]">
@@ -55,7 +57,6 @@ export default {
 
     const onSubmit = handleSubmit(async () => {
       redHeart.value = false;
-   
 
       setTimeout(async () => {
         store.commit("covidPolitic/setCovidPoliticValidation", {
@@ -73,9 +74,6 @@ export default {
           alert(error);
         }
       }, 100);
-
-
-  
     });
 
     provide("submitForm", onSubmit);
@@ -89,12 +87,12 @@ export default {
     return {
       submitForm: onSubmit,
       redHeart,
-      isSubmitted
+      isSubmitted,
     };
   },
 };
 </script>
 
 <style scoped>
-@import '@/utils/animations/styles/covid-politic.css'
+@import "@/utils/animations/styles/covid-politic.css";
 </style>
