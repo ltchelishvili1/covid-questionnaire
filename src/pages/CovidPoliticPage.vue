@@ -96,26 +96,5 @@ export default {
 </script>
 
 <style scoped>
-.red-heart-enter-from {
-  transform: translate(270px, 40px);
-}
-
-.red-heart-leave-to {
-  transform: translate(-2200px, -1500px);
-  width: 5500px;
-}
-
-.red-heart-enter-active {
-  transition: all 0.5s ease-out;
-}
-
-.red-heart-leave-active {
-  transition: all 0.5s ease-in;
-}
-
-.red-heart-enter-to,
-.red-heart-leave-from {
-  width: 196px;
-}
-
+@import '@/utils/animations/styles/covid-politic.css'
 </style>

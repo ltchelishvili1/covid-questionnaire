@@ -73,45 +73,5 @@ button:hover {
 </style>
 
 <style scoped>
-.redberry-icon-enter-from {
-  width: 5500px;
-}
-
-.redberry-icon-leave-to {
-  transform: translate(100px, -150px);
-}
-
-.redberry-icon-enter-active {
-  transition: all 0.5s ease-out;
-}
-
-.redberry-icon-leave-active {
-  transition: all 0.5s ease-in;
-}
-
-.redberry-icon-enter-to,
-.redberry-icon-leave-from {
-  scale: 1;
-  width: 200px;
-}
-
-.title-enter-from,
-.title-leave-to {
-  transform: translateY(-200px);
-  opacity: 0;
-}
-
-.title-enter-active {
-  transition: all 0.5s ease-out;
-}
-
-.title-leave-active {
-  transition: all 0.5s ease-in;
-}
-
-.title-enter-to,
-.title-leave-from {
-  transform: translateY(0);
-  opacity: 1;
-}
+@import '@/utils/animations/styles/home-page.css';
 </style>

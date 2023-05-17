@@ -75,24 +75,5 @@ export default {
 </script>
 
 <style scoped>
-.yellow-box-enter-from {
-  transform: translate(190px,200px);
-}
-
-.yellow-box-leave-to {
-  transform: translate(190px,200px);
-}
-
-.yellow-box-enter-active {
-  transition: all 0.5s ease-out;
-}
-
-.yellow-box-leave-active {
-  transition: all 0.5s ease-in;
-}
-
-.yellow-box-enter-to,
-.yellow-box-leave-from {
-  transform: translate(230px,150px);
-}
+@import '@/utils/animations/styles/identification.css'
 </style>

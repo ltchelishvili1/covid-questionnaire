@@ -57,41 +57,5 @@ export default {
 </script>
 
 <style scoped>
-.route-enter-from,
-.route-leave-to {
-  opacity: 0;
-}
-
-.route-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.route-leave-active {
-  transition: all 0.3s ease-in;
-}
-
-.route-enter-to,
-.route-leave-from {
-  opacity: 1;
-}
-
-.thank-you-icon-big-enter-from {
-  opacity: 0;
-  transform: translate(100px, 100px);
-}
-
-.thank-you-icon-big-leave-to,
-.thank-you-icon-small-leave-to {
-  opacity: 0;
-}
-
-.thank-you-icon-big-enter-active,
-.thank-you-icon-small-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.thank-you-icon-small-enter-from {
-  opacity: 0;
-  transform: translate(-100px, -100px);
-}
+@import '@/utils/animations/styles/thank-you.css'
 </style>

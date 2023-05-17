@@ -96,24 +96,5 @@ export default {
 </script>
 
 <style scoped>
-.red-circle-enter-from {
-  transform: translate(230px, 150px);
-}
-
-.red-circle-leave-to {
-  transform: translate(240px, 30px);
-}
-
-.red-circle-enter-active {
-  transition: all 0.5s ease-out;
-}
-
-.red-circle-leave-active {
-  transition: all 0.5s ease-in;
-}
-
-.red-circle-enter-to,
-.red-circle-leave-from {
-  transform: translate(190px, 185px);
-}
+@import '@/utils/animations/styles/covid-status.css'
 </style>

@@ -106,24 +106,5 @@ export default {
 </script>
 
 <style scoped>
-.yellow-star-enter-from {
-  transform: translate(200px, 30px);
-}
-
-.yellow-star-leave-to {
-  transform: translate(280px, 60px);
-}
-
-.yellow-star-enter-active {
-  transition: all 0.5s ease-out;
-}
-
-.yellow-star-leave-active {
-  transition: all 0.5s ease-in;
-}
-
-.yellow-star-enter-to,
-.yellow-star-leave-from {
-  transform: translate(220px, -10px);
-}
+@import '@/utils/animations/styles/vaccinated.css'
 </style>
