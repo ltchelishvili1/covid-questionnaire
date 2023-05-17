@@ -64,8 +64,11 @@ export default {
     const checkHadAntibody = computed(() => hadAntibodyRef.value);
 
     const onSubmit = handleSubmit(() => {
-      store.commit("covidStatus/setCovidStatusValidation", { isValid: true });
-      router.push({ name: "vaccinated" });
+      redCircle.value = false;
+      setTimeout(() => {
+        store.commit("covidStatus/setCovidStatusValidation", { isValid: true });
+        router.push({ name: "vaccinated" });
+      }, 500);
     });
 
     provide("submitForm", onSubmit);
@@ -98,7 +101,7 @@ export default {
 }
 
 .red-circle-leave-to {
-  transform: translate(190px, 185px);
+  transform: translate(240px, 30px);
 }
 
 .red-circle-enter-active {
@@ -111,6 +114,6 @@ export default {
 
 .red-circle-enter-to,
 .red-circle-leave-from {
-  transform:  translate(190px, 185px);
+  transform: translate(190px, 185px);
 }
 </style>
