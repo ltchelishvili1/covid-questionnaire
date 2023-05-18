@@ -9,9 +9,7 @@
           v-if="redHeart"
           class="translate-x-[300px] translate-y-[90px] w-[196px] h-[173px]"
         >
-          <icon-heart
-            :class="[isSubmitted ? 'fill-[#232323]' : 'fill-[#F39494]']"
-          ></icon-heart>
+          <icon-heart class="fill-[#F39494]"></icon-heart>
         </div>
       </transition>
 
@@ -31,7 +29,7 @@ import IconHeart from "@/components/icons/IconHeart.vue";
 import { useStore } from "vuex";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
-import { onMounted, provide, ref, onBeforeMount } from "vue";
+import { onMounted, provide, ref } from "vue";
 
 export default {
   components: {
@@ -45,35 +43,26 @@ export default {
     const store = useStore();
     const router = useRouter();
     const redHeart = ref(false);
-    const isSubmitted = ref(false);
-
-    onBeforeMount(() => {
-      setTimeout(() => {
-        redHeart.value = true;
-      }, 10);
-    });
 
     const { handleSubmit } = useForm();
 
     const onSubmit = handleSubmit(async () => {
       redHeart.value = false;
 
-      setTimeout(async () => {
-        store.commit("covidPolitic/setCovidPoliticValidation", {
-          isValid: true,
-        });
+      store.commit("covidPolitic/setCovidPoliticValidation", {
+        isValid: true,
+      });
 
-        try {
-          const status = await store.dispatch("covidPolitic/sendRequest");
-          if (status === 201) {
-            router.push({ name: "thank-you" });
-          } else {
-            alert("An error occurred. Please try again.");
-          }
-        } catch (error) {
-          alert(error);
+      try {
+        const status = await store.dispatch("covidPolitic/sendRequest");
+        if (status === 201) {
+          router.push({ name: "thank-you" });
+        } else {
+          alert("An error occurred. Please try again.");
         }
-      }, 100);
+      } catch (error) {
+        alert(error);
+      }
     });
 
     provide("submitForm", onSubmit);
@@ -82,12 +71,12 @@ export default {
       store.commit("covidPolitic/setCovidPoliticValidation", {
         isValid: false,
       });
+      redHeart.value = true;
     });
 
     return {
       submitForm: onSubmit,
       redHeart,
-      isSubmitted,
     };
   },
 };

@@ -42,12 +42,6 @@ export default {
     const router = useRouter();
     const redCircle = ref(false);
 
-    onBeforeMount(() => {
-      setTimeout(() => {
-        redCircle.value = true;
-      }, 10);
-    });
-
     const hadCovid = computed(
       () => store.getters["covidStatus/getHadCovidValue"]
     );
@@ -60,8 +54,8 @@ export default {
 
     const { handleSubmit } = useForm();
 
-    const checkHadCovid = computed(() => hadCovidRef.value === "yes") || '';
-    const checkHadAntibody = computed(() => hadAntibodyRef.value) || '';
+    const checkHadCovid = computed(() => hadCovidRef.value === "yes") || "";
+    const checkHadAntibody = computed(() => hadAntibodyRef.value) || "";
 
     const onSubmit = handleSubmit(() => {
       redCircle.value = false;
@@ -74,6 +68,7 @@ export default {
     provide("submitForm", onSubmit);
 
     onMounted(() => {
+      redCircle.value = true;
       store.commit("covidStatus/setCovidStatusValidation", { isValid: false });
     });
 
@@ -96,5 +91,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/utils/animations/styles/covid-status.css'
+@import "@/utils/animations/styles/covid-status.css";
 </style>

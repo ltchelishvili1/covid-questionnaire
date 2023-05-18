@@ -1,20 +1,28 @@
-.red-circle-enter-from {
+.red-circle-enter-active {
+  animation: red-circle-enter 0.5s ease-out;
+}
+
+.red-circle-leave-active {
+  animation: red-circle-leave 0.5s ease-in;
+}
+
+
+@keyframes red-circle-enter {
+  from {
     transform: translate(230px, 150px);
   }
-  
-  .red-circle-leave-to {
+
+  to {
+    transform: translate(190px, 185px);
+  }
+}
+
+@keyframes red-circle-leave {
+  from {
+    transform: translate(190px, 185px);
+  }
+
+  to {
     transform: translate(240px, 30px);
   }
-  
-  .red-circle-enter-active {
-    transition: all 0.5s ease-out;
-  }
-  
-  .red-circle-leave-active {
-    transition: all 0.5s ease-in;
-  }
-  
-  .red-circle-enter-to,
-  .red-circle-leave-from {
-    transform: translate(190px, 185px);
 }

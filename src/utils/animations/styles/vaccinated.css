@@ -1,20 +1,34 @@
-.yellow-star-enter-from {
-    transform: translate(200px, 30px);
-  }
-  
-  .yellow-star-leave-to {
-    transform: translate(280px, 60px);
-  }
-  
+
   .yellow-star-enter-active {
-    transition: all 0.5s ease-out;
+    animation: yellow-star-enter 0.5s ease-out;
   }
   
+
   .yellow-star-leave-active {
-    transition: all 0.5s ease-in;
+    animation: yellow-star-leave 0.5s ease-in;
   }
   
   .yellow-star-enter-to,
   .yellow-star-leave-from {
-    transform: translate(220px, -10px);
+    width: 196px;
+  }
+  
+  @keyframes yellow-star-enter {
+    from {
+      transform: translate(200px, 30px);
+    }
+    
+    to {
+      transform: translate(220px, -10px);
+    }
+  }
+  
+  @keyframes yellow-star-leave {
+    from {
+      transform: translate(220px, -10px);
+    }
+    
+    to {
+      transform: translate(280px, 60px);
+    }
   }

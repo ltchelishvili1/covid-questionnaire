@@ -26,7 +26,7 @@ import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { onMounted, provide, onBeforeMount , ref} from "vue";
+import {  provide, onMounted , ref} from "vue";
 
 export default {
   components: {
@@ -41,11 +41,7 @@ export default {
     const store = useStore();
     const showBox = ref(false);
 
-    onBeforeMount(() => {
-      setTimeout(() => {
-        showBox.value = true;
-      }, 1);
-    });
+
 
     const onSubmit = handleSubmit(() => {
       showBox.value = false;
@@ -62,6 +58,7 @@ export default {
     provide("submitForm", onSubmit);
 
     onMounted(() => {
+      showBox.value = true;
       store.commit("identification/setIdentificationValidation", {
         isValid: false,
       });

@@ -26,7 +26,7 @@
 
 <script>
 import IconRedberry from "@/components/icons/IconRedberry.vue";
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
@@ -39,22 +39,17 @@ export default {
 
     const router = useRouter();
 
-    onBeforeMount(() => {
-      setTimeout(() => {
-        showIcon.value = true;
-      }, 100);
-
-      setTimeout(() => {
-        showText.value = true;
-      }, 1000);
-    });
-
     const onClick = () => {
       showIcon.value = false;
       setTimeout(() => {
         router.push({ name: "identification" });
       }, 500);
     };
+
+    onMounted(() => {
+      showIcon.value = true;
+      showText.value = true;
+    });
 
     return {
       showIcon,
@@ -73,5 +68,5 @@ button:hover {
 </style>
 
 <style scoped>
-@import '@/utils/animations/styles/home-page.css';
+@import "@/utils/animations/styles/home-page.css";
 </style>

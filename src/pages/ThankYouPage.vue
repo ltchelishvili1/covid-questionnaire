@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { ref, onBeforeMount } from "vue";
+import { ref, onMounted } from "vue";
 import IconThankYouBig from "@/components/icons/IconThankYouBig.vue";
 import IconThankYouSmall from "@/components/icons/IconThankYouSmall.vue";
 
@@ -36,16 +36,9 @@ export default {
     const showText = ref(false);
     const showIcon = ref(false);
 
-    onBeforeMount(() => {
-      setTimeout(() => {
-        showText.value = true;
-      }, 300);
-    });
-
-    onBeforeMount(() => {
-      setTimeout(() => {
-        showIcon.value = true;
-      }, 600);
+    onMounted(() => {
+      showText.value = true;
+      showIcon.value = true;
     });
 
     return {
@@ -57,5 +50,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/utils/animations/styles/thank-you.css'
+@import "@/utils/animations/styles/thank-you.css";
 </style>

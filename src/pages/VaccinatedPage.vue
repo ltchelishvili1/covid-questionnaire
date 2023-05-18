@@ -44,12 +44,6 @@ export default {
     const store = useStore();
     const yellowStar = ref(false);
 
-    onBeforeMount(() => {
-      setTimeout(() => {
-        yellowStar.value = true;
-      }, 10);
-    });
-
     const hadVaccine = computed(
       () => store.getters["vaccinated/getHadVaccineValue"]
     );
@@ -91,6 +85,7 @@ export default {
     });
 
     onMounted(() => {
+      yellowStar.value = true;
       store.commit("vaccinated/setVaccinationValidation", { isValid: false });
     });
 
