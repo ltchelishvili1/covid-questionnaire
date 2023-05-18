@@ -58,10 +58,10 @@ export default {
         if (status === 201) {
           router.push({ name: "thank-you" });
         } else {
-          alert("An error occurred. Please try again.");
+          throw new Error("An error occurred. Please try again.");
         }
       } catch (error) {
-        alert(error);
+        throw new Error(error.message);
       }
     });
 
