@@ -4,7 +4,7 @@
       <transition name="redberry-icon" mode="out-in">
         <div
           v-if="showIcon"
-          class="absolute -translate-y-[100px] bg-light-gray z-10 p-12 w-[200px] p-[10px] z-100"
+          class="absolute -translate-y-[100px] bg-light-gray z-10 p-12 w-[200px] p-[50px] z-100"
         >
           <icon-redberry></icon-redberry>
         </div>
