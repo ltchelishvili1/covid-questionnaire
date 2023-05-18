@@ -108,19 +108,19 @@ import { inject } from "vue";
 export default {
   props: {
     iAmWaiting: {
-      type: String ,
+      type: [Boolean, String],
       required: true,
-      default: ''
+      default: "",
     },
     hadVaccine: {
-      type: String ,
+      type: [Boolean, String],
       required: true,
-      default: ''
+      default: "",
     },
     vaccinationStage: {
-      type: String ,
+      type: [Boolean, String],
       required: true,
-      default: ''
+      default: "",
     },
   },
 

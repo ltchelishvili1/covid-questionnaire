@@ -7,7 +7,15 @@
       ></covid-status-form>
     </template>
     <template v-slot:icon>
-      <had-covid-background></had-covid-background>
+      <transition name="red-circle" mode="out-in">
+        <div
+          v-if="redCircle"
+          class="translate-x-[190px] translate-y-[185px] h-[230px] w-[230px] bg-[#DD3939] rounded-full"
+        ></div>
+      </transition>
+      <div class="absolute top-[120px] ml-[100px]">
+        <had-covid-background></had-covid-background>
+      </div>
     </template>
   </questionaire-layout>
 </template>
@@ -16,7 +24,7 @@
 import { useStore } from "vuex";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
-import { onMounted, computed, ref, watch, provide } from "vue";
+import { onMounted, computed, ref, watch, provide, onBeforeMount } from "vue";
 
 import hadCovidBackground from "@/assets/images/hadCovidBackground.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
@@ -32,6 +40,8 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
+    const redCircle = ref(false);
+
     const hadCovid = computed(
       () => store.getters["covidStatus/getHadCovidValue"]
     );
@@ -44,17 +54,21 @@ export default {
 
     const { handleSubmit } = useForm();
 
-    const checkHadCovid = computed(() => hadCovidRef.value === "yes");
-    const checkHadAntibody = computed(() => hadAntibodyRef.value);
+    const checkHadCovid = computed(() => hadCovidRef.value === "yes") || "";
+    const checkHadAntibody = computed(() => hadAntibodyRef.value) || "";
 
     const onSubmit = handleSubmit(() => {
-      store.commit("covidStatus/setCovidStatusValidation", { isValid: true });
-      router.push({ name: "vaccinated" });
+      redCircle.value = false;
+      setTimeout(() => {
+        store.commit("covidStatus/setCovidStatusValidation", { isValid: true });
+        router.push({ name: "vaccinated" });
+      }, 500);
     });
 
     provide("submitForm", onSubmit);
 
     onMounted(() => {
+      redCircle.value = true;
       store.commit("covidStatus/setCovidStatusValidation", { isValid: false });
     });
 
@@ -69,8 +83,13 @@ export default {
     return {
       submitForm: onSubmit,
       hadCovid: checkHadCovid,
-      checkHadAntibody,
+      checkHadAntibody: checkHadAntibody,
+      redCircle,
     };
   },
 };
 </script>
+
+<style scoped>
+@import "@/utils/animations/styles/covid-status.css";
+</style>

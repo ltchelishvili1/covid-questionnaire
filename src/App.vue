@@ -15,3 +15,16 @@ export default {
   },
 };
 </script>
+
+<style>
+@font-face {
+  font-family: 'bpg_arial';
+  src: local('bpg_arial'),
+  url('@/assets/font/bpg_arial.ttf')
+}
+
+body{
+  font-family: 'bpg-arial';
+}
+
+</style>

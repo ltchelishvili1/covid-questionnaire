@@ -1,0 +1,28 @@
+  .yellow-box-enter-active {
+    animation: yellow-box-enter 0.5s ease-out;
+  }
+  
+
+  .yellow-box-leave-active {
+    animation: yellow-box-leave 0.5s ease-in;
+  }
+  
+  @keyframes yellow-box-enter {
+    from {
+      transform: translate(190px,200px);
+    }
+    
+    to {
+      transform: translate(230px,150px);
+    }
+  }
+  
+  @keyframes yellow-box-leave {
+    from {
+      transform: translate(230px,150px);
+    }
+    
+    to {
+      transform: translate(190px,200px);
+    }
+  }

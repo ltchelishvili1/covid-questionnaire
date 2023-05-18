@@ -1,0 +1,64 @@
+.redberry-icon-enter-active {
+  animation: redberry-icon-enter 0.5s ease-out;
+}
+
+.redberry-icon-leave-active {
+  animation: redberry-icon-leave 0.5s ease-in;
+}
+
+@keyframes redberry-icon-enter {
+  from {
+    width: 5500px;
+  }
+
+  to {
+    width: 200px;
+  }
+}
+
+@keyframes redberry-icon-leave {
+  from {
+    width: 196px;
+  }
+
+  to {
+    transform: translate(100px, -150px);
+  }
+}
+
+.title-enter-active {
+  animation: title-enter 1.5s ease-out;
+}
+
+.title-leave-active {
+  animation: title-leave 0.5s ease-in;
+}
+
+.title-enter-to,
+.title-leave-from {
+  width: 196px;
+}
+
+@keyframes title-enter {
+  from {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes title-leave {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+}

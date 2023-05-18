@@ -8,7 +8,12 @@
       ></vaccinated-form>
     </template>
     <template v-slot:icon>
-      <div class="absolute top-[200px] ml-[140px]">
+      <transition name="yellow-star" mode="out-in">
+        <div v-if="yellowStar" class="translate-x-[220px] -translate-y-[10px] w-[50%]">
+          <icon-star></icon-star>
+        </div>
+      </transition>
+      <div class="absolute top-[220px] ml-[200px] ">
         <vaccinated-background></vaccinated-background>
       </div>
     </template>
@@ -20,21 +25,25 @@ import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { onMounted, computed, ref, watch, provide } from "vue";
+import { onMounted, computed, ref, watch, provide, onBeforeMount } from "vue";
 import VaccinatedBackground from "@/assets/images/VaccinatedBackground.vue";
 import VaccinatedForm from "@/components/vaccinated/Form.vue";
+import IconStar from "@/components/icons/IconStar.vue";
 
 export default {
   components: {
     QuestionaireLayout,
     VaccinatedBackground,
     VaccinatedForm,
+    IconStar,
   },
 
   setup() {
     const { handleSubmit } = useForm();
     const router = useRouter();
     const store = useStore();
+    const yellowStar = ref(false);
+
     const hadVaccine = computed(
       () => store.getters["vaccinated/getHadVaccineValue"]
     );
@@ -50,13 +59,16 @@ export default {
     const vaccinationStageRef = ref(vaccinationState.value);
     const iAmWaitingRef = ref(iAmWaiting.value);
 
-    const checkHadVaccine = computed(() => hadVaccineRef.value);
-    const checkVaccintionStage = computed(() => vaccinationStageRef.value);
-    const checkIAmWaiting = computed(() => iAmWaitingRef.value);
+    const checkHadVaccine = computed(() => hadVaccineRef.value) || '';
+    const checkVaccintionStage = computed(() => vaccinationStageRef.value) || '';
+    const checkIAmWaiting = computed(() => iAmWaitingRef.value) || '';
 
     const onSubmit = handleSubmit(() => {
-      store.commit("vaccinated/setVaccinationValidation", { isValid: true });
-      router.push({ name: "covid-politic" });
+      yellowStar.value = false;
+      setTimeout(() => {
+        store.commit("vaccinated/setVaccinationValidation", { isValid: true });
+        router.push({ name: "covid-politic" });
+      }, 500);
     });
 
     provide("submitForm", onSubmit);
@@ -73,6 +85,7 @@ export default {
     });
 
     onMounted(() => {
+      yellowStar.value = true;
       store.commit("vaccinated/setVaccinationValidation", { isValid: false });
     });
 
@@ -81,7 +94,12 @@ export default {
       hadVaccine: checkHadVaccine,
       vaccinationStage: checkVaccintionStage,
       iAmWaiting: checkIAmWaiting,
+      yellowStar,
     };
   },
 };
 </script>
+
+<style scoped>
+@import '@/utils/animations/styles/vaccinated.css'
+</style>

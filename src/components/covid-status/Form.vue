@@ -64,11 +64,12 @@
       </div>
 
       <div class="mt-[29px]">
-        <base-input
+        <base-date
           name="test_date"
           type="date"
+          placeholder="რიცხვი"
           page="covidStatus"
-        ></base-input>
+        ></base-date>
         <base-input
           type="number"
           class="transform -translate-y-8"
@@ -87,12 +88,13 @@
       </div>
 
       <div class="mt-[29px]">
-        <base-input
+        <base-date
           name="covid_sickness_date"
           type="date"
           rules="required"
           page="covidStatus"
-        ></base-input>
+          placeholder="დდ/თთ/წწ"
+        ></base-date>
       </div>
     </div>
   </form>
@@ -101,20 +103,22 @@
 <script>
 import BaseInput from "@/components/UI/inputs/BaseInput.vue";
 import BaseRadio from "@/components/UI/inputs/BaseRadio.vue";
+import BaseDate from '@/components/UI/inputs/BaseDate.vue'
 import { computed } from "vue";
 
 export default {
   components: {
     BaseInput,
     BaseRadio,
+    BaseDate
   },
   props: {
     hadCovid: {
-      type: Boolean || Null,
+      type: [Boolean, String],
       required: true,
     },
     checkHadAntibody: {
-      type: String || Null,
+      type: [Boolean, String],
       required: true,
       default: "",
     },

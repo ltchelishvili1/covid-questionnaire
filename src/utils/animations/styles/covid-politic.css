@@ -1,0 +1,34 @@
+.red-heart-enter-active {
+  animation: red-heart-enter 0.5s ease-out;
+}
+
+.red-heart-leave-active {
+  animation: red-heart-leave 0.5s ease-in;
+}
+
+.red-heart-enter-to,
+.red-heart-leave-from {
+  width: 196px;
+}
+
+@keyframes red-heart-enter {
+  from {
+    transform: translate(270px, 40px);
+  }
+  
+  to {
+    transform: translate(300px, 90px);
+  }
+}
+
+@keyframes red-heart-leave {
+  from {
+    transform: translate(0, 0);
+    width: 196px;
+  }
+  
+  to {
+    transform: translate(-2200px, -1500px);
+    width: 5500px;
+  }
+}

@@ -1,35 +1,44 @@
-# covid-questionaire
+# Covid Questionaire
 
-This template should help get you started developing with Vue 3 in Vite.
+This is survey of Covid 19 statistics
 
-## Recommended IDE Setup
+## Table of Contents
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [Prerequisites](#prerequisites)
 
-## Customize configuration
+- [Tech Stack](#tech-stack)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- [Getting Started](#getting-started)
 
-## Project Setup
+## Prerequisites
 
-```sh
-npm install
+- npm@6 and up
+
+## Tech Stack
+
+- Tailwind3.3.1@up - styling package
+- VeeValidate4.x@up - package for validation
+- Vuex4.x@up" - package for state managment
+- VueRouter4.x@up - package for routing
+
+## Getting Started
+
+clone project from githun repository
+
+```bash
+  git clone https://github.com/RedberryInternship/levan-tchelishvili-covid-questionnaire
 ```
 
-### Compile and Hot-Reload for Development
+Run npm install to install dependencies
 
-```sh
-npm run dev
+```bash
+  npm install
 ```
 
-### Compile and Minify for Production
+Install JS dependencies
 
-```sh
-npm run build
+```bash
+  npm run dev
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+#### Now, you should be good to go!
