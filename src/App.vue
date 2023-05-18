@@ -20,7 +20,7 @@ export default {
 @font-face {
   font-family: 'bpg_arial';
   src: local('bpg_arial'),
-  url('@/assets/font/bpg_arial.ttf')
+  url('@/assets/fonts/bpg_arial.ttf')
 }
 
 body{
