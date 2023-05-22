@@ -2,19 +2,19 @@
   <Form @submit="submitForm">
     <base-input
       title="სახელი"
-      rules="required|minLength:2,სახელი"
+      rules="required:სახელი|min:2,სახელი"
       name="first_name"
       placeholder="იოსებ"
     ></base-input>
     <base-input
       title="გვარი"
-      rules="required|minLength:2,გვარი"
+      rules="required:გვარი|min:2,გვარი"
       name="last_name"
       placeholder="ჯუღაშვილი"
     ></base-input>
     <base-input
       title="მეილი"
-      rules="required|emailRedberry"
+      rules="required:მეილი|emailRedberry"
       name="email"
       placeholder="fbi@redberry.ge"
       type="email"
