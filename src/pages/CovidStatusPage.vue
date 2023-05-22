@@ -28,7 +28,7 @@ import { onMounted, computed, ref, watch, provide } from "vue";
 
 import hadCovidBackground from "@/assets/images/hadCovidBackground.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
-import CovidStatusForm from "@/components/covid-status/Form.vue";
+import CovidStatusForm from "@/components/covid-status/CovidStatusForm.vue";
 
 export default {
   components: {

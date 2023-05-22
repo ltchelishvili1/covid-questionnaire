@@ -20,7 +20,7 @@
 
 <script>
 import IdentificationBackground from "@/assets/images/IdentificationBackground.vue";
-import IdentificationForm from "@/components/identification/Form.vue";
+import IdentificationForm from "@/components/identification/IdentificationForm.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
 
 
