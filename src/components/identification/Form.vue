@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <Form @submit="submitForm">
     <base-input
       title="სახელი"
       rules="required|minLength:2,სახელი"
@@ -19,16 +19,24 @@
       placeholder="fbi@redberry.ge"
       type="email"
     ></base-input>
-  </form>
+
+    <button class="absolute right-[50%] bottom-[9%] translate-x-[140px]">
+      <icon-forward></icon-forward>
+    </button>
+  </Form>
 </template>
 
 <script>
 import BaseInput from "@/components/UI/inputs/BaseInput.vue";
+import IconForward from "@/components/icons/IconForward.vue";
+import { Form } from "vee-validate";
 import { inject } from "vue";
 
 export default {
   components: {
     BaseInput,
+    IconForward,
+    Form,
   },
   setup() {
     return {

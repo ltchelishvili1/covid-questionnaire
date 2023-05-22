@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <Form @submit="submitForm">
     <div>
       <div class="mb-[14px]">
         <p class="font-semibold text-2xl">უკვე აცრილი ხარ?*</p>
@@ -97,12 +97,18 @@
         >
       </p>
     </div>
-  </form>
+    <button class="absolute right-[50%] bottom-[9%] translate-x-[140px] z-50">
+      <icon-forward></icon-forward>
+    </button>
+  </Form>
 </template>
 
 <script>
+import { Form } from "vee-validate";
 import BaseInput from "@/components/UI/inputs/BaseInput.vue";
 import BaseRadio from "@/components/UI/inputs/BaseRadio.vue";
+import IconForward from "@/components/icons/IconForward.vue";
+
 import { inject } from "vue";
 
 export default {
@@ -127,6 +133,8 @@ export default {
   components: {
     BaseInput,
     BaseRadio,
+    IconForward,
+    Form,
   },
   setup() {
     return {

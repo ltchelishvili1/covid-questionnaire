@@ -23,6 +23,7 @@ import IdentificationBackground from "@/assets/images/IdentificationBackground.v
 import IdentificationForm from "@/components/identification/Form.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
 
+
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";

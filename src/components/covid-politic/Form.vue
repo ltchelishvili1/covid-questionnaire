@@ -1,6 +1,6 @@
 <template>
-  <form
-    @submit.prevent="submitForm"
+  <Form
+    @submit="submitForm"
     class="h-[600px] sm: overflow-y-scroll overflow-y-hidden hover:overflow-y-scroll scrollbar scrollbar-thumb-gray-300 scrollbar-track-transparent scrollbar-thin"
   >
     <p class="w-[440px] text-xl">
@@ -127,20 +127,25 @@
         </button>
       </div>
     </div>
-  </form>
+
+  </Form>
 </template>
 
 <script>
 import { inject } from "vue";
+import { Form } from "vee-validate";
 import BaseInput from "@/components/UI/inputs/BaseInput.vue";
 import BaseRadio from "@/components/UI/inputs/BaseRadio.vue";
 import BaseTextArea from "@/components//UI/inputs/BaseTextArea.vue";
+import IconForward from "@/components/icons/IconForward.vue";
 
 export default {
   components: {
     BaseInput,
     BaseRadio,
     BaseTextArea,
+    IconForward,
+    Form,
   },
   setup() {
     return {

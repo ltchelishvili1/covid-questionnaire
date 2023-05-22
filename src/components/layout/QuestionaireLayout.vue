@@ -20,23 +20,18 @@
       <router-link :to="link" class="mr-[60px]">
         <icon-back v-if="page !== 1"></icon-back>
       </router-link>
-      <button :onclick="submitForm" class="ml-[60px]">
-        <icon-forward v-if="page !== 4"></icon-forward>
-      </button>
     </div>
   </main>
 </template>
 <script>
 import IconName from "@/components/icons/IconName.vue";
 import IconBack from "@/components/icons/IconBack.vue";
-import IconForward from "@/components/icons/IconForward.vue";
 import { inject } from "vue";
 
 export default {
   components: {
     IconName,
     IconBack,
-    IconForward,
   },
   props: {
     page: {
