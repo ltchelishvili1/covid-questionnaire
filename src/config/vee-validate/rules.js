@@ -1,20 +1,26 @@
 import { defineRule } from "vee-validate";
 
-defineRule("required", (value) => {
-  if (!value || !value.length) {
-    return "ველი სავალდებულოა";
-  }
+import { required, email, min, alpha_num, max } from "@vee-validate/rules";
 
-  return true;
-});
+defineRule("required", required);
+defineRule("email", email);
+defineRule("min", min);
 
-defineRule("minLength", (value, [minLength, name]) => {
-  if (!value || value.length < minLength) {
-    return name + `ს ველი უნდა შედგებოდეს მინიმუმ ${minLength} სიმბოლოსგან`;
-  }
+// defineRule("required", (value) => {
+//   if (!value || !value.length) {
+//     return "ველი სავალდებულოა";
+//   }
 
-  return true;
-});
+//   return true;
+// });
+
+// defineRule("minLength", (value, [minLength, name]) => {
+//   if (!value || value.length < minLength) {
+//     return name + `ს ველი უნდა შედგებოდეს მინიმუმ ${minLength} სიმბოლოსგან`;
+//   }
+
+//   return true;
+// });
 
 defineRule("emailRedberry", (value) => {
   const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

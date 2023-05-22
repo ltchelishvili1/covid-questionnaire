@@ -23,7 +23,7 @@
 <script>
 import CovidPoliticBackground from "@/assets/images/CovidPoliticBackground.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
-import CovidPoliticForm from "@/components/covid-politic/Form.vue";
+import CovidPoliticForm from "@/components/covid-politic/CovidPoliticForm.vue";
 import IconHeart from "@/components/icons/IconHeart.vue";
 
 import { useStore } from "vuex";

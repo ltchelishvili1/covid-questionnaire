@@ -9,11 +9,14 @@
     </template>
     <template v-slot:icon>
       <transition name="yellow-star" mode="out-in">
-        <div v-if="yellowStar" class="translate-x-[220px] -translate-y-[10px] w-[50%]">
+        <div
+          v-if="yellowStar"
+          class="translate-x-[220px] -translate-y-[10px] w-[50%]"
+        >
           <icon-star></icon-star>
         </div>
       </transition>
-      <div class="absolute top-[220px] ml-[200px] ">
+      <div class="absolute top-[220px] ml-[200px]">
         <vaccinated-background></vaccinated-background>
       </div>
     </template>
@@ -25,9 +28,9 @@ import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { onMounted, computed, ref, watch, provide, onBeforeMount } from "vue";
+import { onMounted, computed, ref, watch, provide } from "vue";
 import VaccinatedBackground from "@/assets/images/VaccinatedBackground.vue";
-import VaccinatedForm from "@/components/vaccinated/Form.vue";
+import VaccinatedForm from "@/components/vaccinated/VaccinatedForm.vue";
 import IconStar from "@/components/icons/IconStar.vue";
 
 export default {
@@ -59,9 +62,10 @@ export default {
     const vaccinationStageRef = ref(vaccinationState.value);
     const iAmWaitingRef = ref(iAmWaiting.value);
 
-    const checkHadVaccine = computed(() => hadVaccineRef.value) || '';
-    const checkVaccintionStage = computed(() => vaccinationStageRef.value) || '';
-    const checkIAmWaiting = computed(() => iAmWaitingRef.value) || '';
+    const checkHadVaccine = computed(() => hadVaccineRef.value) || "";
+    const checkVaccintionStage =
+      computed(() => vaccinationStageRef.value) || "";
+    const checkIAmWaiting = computed(() => iAmWaitingRef.value) || "";
 
     const onSubmit = handleSubmit(() => {
       yellowStar.value = false;
@@ -101,5 +105,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/utils/animations/styles/vaccinated.css'
+@import "@/utils/animations/styles/vaccinated.css";
 </style>

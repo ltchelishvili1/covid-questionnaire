@@ -24,11 +24,11 @@
 import { useStore } from "vuex";
 import { useForm } from "vee-validate";
 import { useRouter } from "vue-router";
-import { onMounted, computed, ref, watch, provide, onBeforeMount } from "vue";
+import { onMounted, computed, ref, watch, provide } from "vue";
 
 import hadCovidBackground from "@/assets/images/hadCovidBackground.vue";
 import QuestionaireLayout from "@/components/layout/QuestionaireLayout.vue";
-import CovidStatusForm from "@/components/covid-status/Form.vue";
+import CovidStatusForm from "@/components/covid-status/CovidStatusForm.vue";
 
 export default {
   components: {
@@ -58,6 +58,7 @@ export default {
     const checkHadAntibody = computed(() => hadAntibodyRef.value) || "";
 
     const onSubmit = handleSubmit(() => {
+      console.log('cli')
       redCircle.value = false;
       setTimeout(() => {
         store.commit("covidStatus/setCovidStatusValidation", { isValid: true });
@@ -81,7 +82,6 @@ export default {
     });
 
     return {
-      submitForm: onSubmit,
       hadCovid: checkHadCovid,
       checkHadAntibody: checkHadAntibody,
       redCircle,

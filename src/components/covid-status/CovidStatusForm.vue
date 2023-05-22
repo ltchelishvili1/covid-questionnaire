@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <Form @submit="submitForm">
     <div>
       <div class="mb-[14px]">
         <p class="font-semibold text-2xl">გაქვს გადატანილი Covid-19?*</p>
@@ -97,20 +97,28 @@
         ></base-date>
       </div>
     </div>
-  </form>
+
+    <button type="submit" class="absolute right-[50%] bottom-[9%] translate-x-[140px] z-50">
+      <icon-forward></icon-forward>
+    </button>
+  </Form>
 </template>
 
 <script>
+import { Form } from "vee-validate";
 import BaseInput from "@/components/UI/inputs/BaseInput.vue";
 import BaseRadio from "@/components/UI/inputs/BaseRadio.vue";
-import BaseDate from '@/components/UI/inputs/BaseDate.vue'
-import { computed } from "vue";
+import BaseDate from "@/components/UI/inputs/BaseDate.vue";
+import IconForward from "@/components/icons/IconForward.vue";
+import { computed, inject } from "vue";
 
 export default {
   components: {
     BaseInput,
     BaseRadio,
-    BaseDate
+    BaseDate,
+    IconForward,
+    Form,
   },
   props: {
     hadCovid: {
@@ -124,7 +132,6 @@ export default {
     },
   },
   setup(props) {
-    
     const hadCovidAndAntibodyTest = computed(() => {
       return props.hadCovid && props.checkHadAntibody === "yes";
     });
@@ -134,6 +141,7 @@ export default {
     return {
       hadCovidAndAntibodyTest,
       hadCovidAndNotAntibodyTest,
+      submitForm: inject("submitForm"),
     };
   },
 };

@@ -10,6 +10,7 @@
           :rules="rules"
           onfocus="(this.type = 'date')"
           v-model="inputData"
+          :placeholder="placeholder"
         />
 
         <div class="mt-[6px]">
